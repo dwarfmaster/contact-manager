@@ -21,45 +21,36 @@ BEGIN {
     # Select the file to read
     # TODO XDG compliant
     ARGV[1] = ENVIRON["HOME"]"/.abook/addressbook";
+
+    # Misc
+    printuser = 0;
+    out = output;
 }
-$0 == "" {
+
+NF == 2 {   
+    user[$1] = $2;
+    # TODO handle multiple value fields
+    if($1 == category && $2 ~ regex) {
+        printuser = 1;
+    }
+    out = gensub("{"$1"}", $2, "g", out)
     next;
 }
-NF != 2 && "name" in user {
-    printuser = 0;
-    # TODO handle multiple value fields
-    for (i in user) {
-        if(i == category && user[i] ~ regex) {
-            printuser = 1;
-            break;
-        }
-    }
 
+ "name" in user {
     if(printuser) {
-        out = output;
-        for (i in user) {
-            out = gensub("{"i"}", user[i], "g", out);
-        }
         print out;
     }
 
     delete user;
+    printuser = 0;
+    out = output;
     next;
 }
-{   
-    user[$1] = $2;
-}
-END {
-    printuser = 0;
-    for (i in user) {
-        if(i == category && user[i] ~ regex) {
-            printuser = 1;
-            break;
-        }
-    }
 
+END {
     if(printuser) {
-        print user["name"];
+        print out;
     }
 }
 
