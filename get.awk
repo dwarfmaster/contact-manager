@@ -55,10 +55,3 @@ NF != 0 && "name" in user {
     next;
 }
 
-END {
-    out = gensub("{filename}", FILENAME, "g", out)
-    if(printuser) {
-        print out;
-    }
-}
-

@@ -16,6 +16,9 @@ An entry has the format `key=value` or `key=value1,value2...`. Any non empty
 line which does not contact a `=` is considered a separator, thus indicating
 a new contact.
 
+An addressbook file must end with a separator, otherwise the last contact may
+be ignored.
+
 A contact example :
 ```
 -----
