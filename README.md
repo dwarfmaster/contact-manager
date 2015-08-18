@@ -41,7 +41,9 @@ In case of a key with multiple values, the regex is matched against every
 value.
 
 The third argument designate how the contact is printed. It is a string in
-which every `{key}` will be replaced by the value for this contact.
+which every `{key}` will be replaced by the value for this contact. There is a
+special key, `filename`, which is the path to the addressbook file containing
+the contact. This is mostly useful for those with multiple contact files.
 
 ## Examples
  - `acm.rb get email ".*@gmail.com" "{name} ({phone})"` shows the name and

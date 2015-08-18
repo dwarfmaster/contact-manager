@@ -44,6 +44,7 @@ NF == 2 {
 }
 
  "name" in user {
+    out = gensub("{filename}", FILENAME, "g", out)
     if(printuser) {
         print out;
     }
@@ -55,6 +56,7 @@ NF == 2 {
 }
 
 END {
+    out = gensub("{filename}", FILENAME, "g", out)
     if(printuser) {
         print out;
     }
