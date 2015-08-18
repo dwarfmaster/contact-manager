@@ -43,7 +43,7 @@ NF == 2 {
     next;
 }
 
- "name" in user {
+NF != 0 && "name" in user {
     out = gensub("{filename}", FILENAME, "g", out)
     if(printuser) {
         print out;
