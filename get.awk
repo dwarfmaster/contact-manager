@@ -29,9 +29,11 @@ BEGIN {
 
 NF == 2 {   
     user[$1] = $2;
-    # TODO handle multiple value fields
-    if($1 == category && $2 ~ regex) {
-        printuser = 1;
+    split($2, parts, ",");
+    for(i in parts) {
+        if($1 == category && parts[i] ~ regex) {
+            printuser = 1;
+        }
     }
     out = gensub("{"$1"}", $2, "g", out)
     next;
