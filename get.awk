@@ -7,20 +7,16 @@ BEGIN {
 
     # Parse the arguments
     if(ARGC != 3 && ARGC != 4) {
-        print "Usage : cm.awk category regex [output]";
+        print "Usage : acm get category regex [output]";
         exit;
     }
-    category = ARGV[1]; delete ARGV[1];
-    regex    = ARGV[2]; delete ARGV[2];
+    category = ARGV[1];
+    regex    = ARGV[2];
     output   = "{name} <{email}>";
     if(ARGC == 4) {
         output = ARGV[3];
-        delete ARGV[3];
     }
-
-    # Select the file to read
-    # TODO XDG compliant
-    ARGV[1] = ENVIRON["HOME"]"/.abook/addressbook";
+    delete ARGV;
 
     # Misc
     printuser = 0;
