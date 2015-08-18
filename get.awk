@@ -1,5 +1,13 @@
 #!/usr/bin/gawk -f
 
+function print_user()
+{
+    out = gensub("{filename}", FILENAME, "g", out)
+    if(printuser) {
+        print out;
+    }
+}
+
 BEGIN {
     RS="\n";
     FS="=";
@@ -44,14 +52,14 @@ NF == 2 {
 }
 
 NF != 0 && "name" in user {
-    out = gensub("{filename}", FILENAME, "g", out)
-    if(printuser) {
-        print out;
-    }
-
+    print_user();
     delete user;
     printuser = 0;
     out = output;
     next;
+}
+
+END {
+    print_user();
 }
 

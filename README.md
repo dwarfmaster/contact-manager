@@ -16,9 +16,6 @@ An entry has the format `key=value` or `key=value1,value2...`. Any non empty
 line which does not contact a `=` is considered a separator, thus indicating
 a new contact.
 
-An addressbook file must end with a separator, otherwise the last contact may
-be ignored.
-
 A contact example :
 ```
 -----
@@ -49,9 +46,7 @@ special key, `filename`, which is the path to the addressbook file containing
 the contact. This is mostly useful for those with multiple contact files.
 
 ## Abook compatibility
-The addressbook format is almost perfectly compatible with the abook[1] one.
-The only difference is that the last contact may be ignored, so a separator
-must be added at the end of the abook addressbook file.
+The addressbook format is perfectly compatible with the abook[1] one.
 
 ## Examples
  - `acm.rb get email ".*@gmail.com" "{name} ({phone})"` shows the name and
