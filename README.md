@@ -44,6 +44,6 @@ The third argument designate how the contact is printed. It is a string in
 which every `{key}` will be replaced by the value for this contact.
 
 ## Examples
- - `acm.sh get email ".*@gmail.com" "{name}"` shows the name of all the
-    contacts with a gamil address.
+ - `acm.rb get email ".*@gmail.com" "{name} ({phone})"` shows the name and
+    phone number of all the contacts with a gmail address.
 
