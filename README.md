@@ -48,7 +48,14 @@ which every `{key}` will be replaced by the value for this contact. There is a
 special key, `filename`, which is the path to the addressbook file containing
 the contact. This is mostly useful for those with multiple contact files.
 
+## Abook compatibility
+The addressbook format is almost perfectly compatible with the abook[1] one.
+The only difference is that the last contact may be ignored, so a separator
+must be added at the end of the abook addressbook file.
+
 ## Examples
  - `acm.rb get email ".*@gmail.com" "{name} ({phone})"` shows the name and
     phone number of all the contacts with a gmail address.
 
+
+[1] http://abook.sourceforge.net/
