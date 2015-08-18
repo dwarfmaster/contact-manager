@@ -6,17 +6,25 @@ BEGIN {
     IGNORECASE=1;
 
     # Parse the arguments
-    if(ARGC != 3 && ARGC != 4) {
+    if(ARGC < 3) {
         print "Usage : acm get category regex [output]";
         exit;
     }
-    category = ARGV[1];
-    regex    = ARGV[2];
+    category = ARGV[1]; delete ARGV[1];
+    regex    = ARGV[2]; delete ARGV[2];
     output   = "{name} <{email}>";
-    if(ARGC == 4) {
-        output = ARGV[3];
+    limit    = 3;
+    if(ARGC >= 4 && ARGV[3] != "--") {
+        output = ARGV[3]; delete ARGV[3];
+        limit  = 4;
     }
-    delete ARGV;
+
+    # Input files
+    if(ARGC <= limit || ARGV[limit] != "--") {
+        print "Usage : acm get category regex [output]";
+        exit;
+    }
+    delete ARGV[limit];
 
     # Misc
     printuser = 0;
