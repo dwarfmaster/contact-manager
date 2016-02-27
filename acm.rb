@@ -6,6 +6,7 @@ def usage
 Usage : acm subcommand [subcommand arguments]
 Available subcommands :
     - get : list contacts maching criteria
+    - birth : save contacts birthdays to a remind file
 END_OF_STRING
 end
 
@@ -58,6 +59,14 @@ when "get"
         Kernel::exec($exe, "--", *$files)
     else
         Kernel::exec($exe, *ARGV, "--", *$files)
+    end
+when "birth"
+    ARGV.shift
+    $exe = "#{$path}/birth.pl"
+    if ARGV.nil?
+        Kernel::exec($exe)
+    else
+        Kernel::exec($exe, *ARGV)
     end
 else
     puts "Invalid subcommand"
